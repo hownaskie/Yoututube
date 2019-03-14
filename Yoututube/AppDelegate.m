@@ -7,6 +7,9 @@
 //
 
 #import "AppDelegate.h"
+#import "HomeController.h"
+#import "UIColor+RgbColor.h"
+#import "UIView+Constraints.h"
 
 @interface AppDelegate ()
 
@@ -17,6 +20,26 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    [self.window makeKeyAndVisible];
+    
+    UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
+    self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[[HomeController alloc] initWithCollectionViewLayout:layout]];
+    
+    //get rid of black bar underneath navbar
+    [UINavigationBar appearance].barTintColor = [UIColor rgbWithRed:230 green:32 blue:31];
+    [UINavigationBar appearance].shadowImage = [[UIImage alloc] init];
+    [[UINavigationBar appearance] setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
+    
+    application.statusBarStyle = UIStatusBarStyleLightContent;
+    
+    UIView *statusBarBackgroundView = [[UIView alloc] init];
+    statusBarBackgroundView.backgroundColor = [UIColor rgbWithRed:194 green:31 blue:31];
+    
+    [self.window addSubview:statusBarBackgroundView];
+    [self.window addConstraintsWithVisualFormat:@"H:|[v0]|" withViews:statusBarBackgroundView, nil];
+    [self.window addConstraintsWithVisualFormat:@"V:|[v0(20)]" withViews:statusBarBackgroundView, nil];    
+    
     return YES;
 }
 
