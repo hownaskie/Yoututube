@@ -7,14 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D50DC0132232D671001EC87C /* UIImageView+Image.m in Sources */ = {isa = PBXBuildFile; fileRef = D50DC0122232D671001EC87C /* UIImageView+Image.m */; };
+		D515DE512237F78C00633C67 /* CustomImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = D515DE502237F78C00633C67 /* CustomImageView.m */; };
+		D515DE542237FFA000633C67 /* SettingsLauncher.m in Sources */ = {isa = PBXBuildFile; fileRef = D515DE532237FFA000633C67 /* SettingsLauncher.m */; };
+		D515DE572238095D00633C67 /* SettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D515DE562238095D00633C67 /* SettingCell.m */; };
+		D516775D22303FF6006DD442 /* UIColor+RgbColor.m in Sources */ = {isa = PBXBuildFile; fileRef = D516775C22303FF6006DD442 /* UIColor+RgbColor.m */; };
+		D51677602230402D006DD442 /* UIView+Constraints.m in Sources */ = {isa = PBXBuildFile; fileRef = D516775F2230402D006DD442 /* UIView+Constraints.m */; };
+		D516776422304117006DD442 /* VideoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D516776322304117006DD442 /* VideoCell.m */; };
+		D5167768223044A1006DD442 /* MenuBar.m in Sources */ = {isa = PBXBuildFile; fileRef = D5167767223044A1006DD442 /* MenuBar.m */; };
 		D5188FA3221658F30068168B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D5188FA2221658F30068168B /* AppDelegate.m */; };
-		D5188FA6221658F30068168B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D5188FA5221658F30068168B /* ViewController.m */; };
+		D5188FA6221658F30068168B /* HomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = D5188FA5221658F30068168B /* HomeController.m */; };
 		D5188FA9221658F30068168B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5188FA7221658F30068168B /* Main.storyboard */; };
 		D5188FAB221658F50068168B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5188FAA221658F50068168B /* Assets.xcassets */; };
 		D5188FAE221658F50068168B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5188FAC221658F50068168B /* LaunchScreen.storyboard */; };
 		D5188FB1221658F50068168B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D5188FB0221658F50068168B /* main.m */; };
 		D5188FBB221658F50068168B /* YoututubeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D5188FBA221658F50068168B /* YoututubeTests.m */; };
 		D5188FC6221658F50068168B /* YoututubeUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = D5188FC5221658F50068168B /* YoututubeUITests.m */; };
+		D51965982230B91400BD86DB /* BaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D51965972230B91400BD86DB /* BaseCell.m */; };
+		D519659B2230BAEF00BD86DB /* MenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D519659A2230BAEF00BD86DB /* MenuCell.m */; };
+		D519659F22311C9100BD86DB /* Video.m in Sources */ = {isa = PBXBuildFile; fileRef = D519659E22311C9100BD86DB /* Video.m */; };
+		D51965A22231230600BD86DB /* Channel.m in Sources */ = {isa = PBXBuildFile; fileRef = D51965A12231230600BD86DB /* Channel.m */; };
+		D5B203412239642600BB9799 /* Setting.m in Sources */ = {isa = PBXBuildFile; fileRef = D5B203402239642600BB9799 /* Setting.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,11 +48,27 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D50DC0112232D671001EC87C /* UIImageView+Image.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImageView+Image.h"; sourceTree = "<group>"; };
+		D50DC0122232D671001EC87C /* UIImageView+Image.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+Image.m"; sourceTree = "<group>"; };
+		D515DE4F2237F78C00633C67 /* CustomImageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomImageView.h; sourceTree = "<group>"; };
+		D515DE502237F78C00633C67 /* CustomImageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomImageView.m; sourceTree = "<group>"; };
+		D515DE522237FFA000633C67 /* SettingsLauncher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingsLauncher.h; sourceTree = "<group>"; };
+		D515DE532237FFA000633C67 /* SettingsLauncher.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingsLauncher.m; sourceTree = "<group>"; };
+		D515DE552238095D00633C67 /* SettingCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingCell.h; sourceTree = "<group>"; };
+		D515DE562238095D00633C67 /* SettingCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingCell.m; sourceTree = "<group>"; };
+		D516775B22303FF6006DD442 /* UIColor+RgbColor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+RgbColor.h"; sourceTree = "<group>"; };
+		D516775C22303FF6006DD442 /* UIColor+RgbColor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+RgbColor.m"; sourceTree = "<group>"; };
+		D516775E2230402D006DD442 /* UIView+Constraints.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+Constraints.h"; sourceTree = "<group>"; };
+		D516775F2230402D006DD442 /* UIView+Constraints.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+Constraints.m"; sourceTree = "<group>"; };
+		D516776222304117006DD442 /* VideoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VideoCell.h; sourceTree = "<group>"; };
+		D516776322304117006DD442 /* VideoCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VideoCell.m; sourceTree = "<group>"; };
+		D5167766223044A1006DD442 /* MenuBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MenuBar.h; sourceTree = "<group>"; };
+		D5167767223044A1006DD442 /* MenuBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MenuBar.m; sourceTree = "<group>"; };
 		D5188F9E221658F30068168B /* Yoututube.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Yoututube.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5188FA1221658F30068168B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D5188FA2221658F30068168B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		D5188FA4221658F30068168B /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		D5188FA5221658F30068168B /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		D5188FA4221658F30068168B /* HomeController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeController.h; sourceTree = "<group>"; };
+		D5188FA5221658F30068168B /* HomeController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeController.m; sourceTree = "<group>"; };
 		D5188FA8221658F30068168B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D5188FAA221658F50068168B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D5188FAD221658F50068168B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -51,6 +80,17 @@
 		D5188FC1221658F50068168B /* YoututubeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YoututubeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5188FC5221658F50068168B /* YoututubeUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YoututubeUITests.m; sourceTree = "<group>"; };
 		D5188FC7221658F50068168B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D51965962230B91400BD86DB /* BaseCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseCell.h; sourceTree = "<group>"; };
+		D51965972230B91400BD86DB /* BaseCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseCell.m; sourceTree = "<group>"; };
+		D51965992230BAEF00BD86DB /* MenuCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MenuCell.h; sourceTree = "<group>"; };
+		D519659A2230BAEF00BD86DB /* MenuCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MenuCell.m; sourceTree = "<group>"; };
+		D519659D22311C9100BD86DB /* Video.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Video.h; sourceTree = "<group>"; };
+		D519659E22311C9100BD86DB /* Video.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Video.m; sourceTree = "<group>"; };
+		D51965A02231230600BD86DB /* Channel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Channel.h; sourceTree = "<group>"; };
+		D51965A12231230600BD86DB /* Channel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Channel.m; sourceTree = "<group>"; };
+		D5B2033F2239642600BB9799 /* Setting.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Setting.h; sourceTree = "<group>"; };
+		D5B203402239642600BB9799 /* Setting.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Setting.m; sourceTree = "<group>"; };
+		D5B2034322399DDB00BB9799 /* Yoututube.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = Yoututube.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +118,49 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D516775A22303FD5006DD442 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				D516775B22303FF6006DD442 /* UIColor+RgbColor.h */,
+				D516775C22303FF6006DD442 /* UIColor+RgbColor.m */,
+				D516775E2230402D006DD442 /* UIView+Constraints.h */,
+				D516775F2230402D006DD442 /* UIView+Constraints.m */,
+				D50DC0112232D671001EC87C /* UIImageView+Image.h */,
+				D50DC0122232D671001EC87C /* UIImageView+Image.m */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		D5167761223040E1006DD442 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D516776222304117006DD442 /* VideoCell.h */,
+				D516776322304117006DD442 /* VideoCell.m */,
+				D5167766223044A1006DD442 /* MenuBar.h */,
+				D5167767223044A1006DD442 /* MenuBar.m */,
+				D51965962230B91400BD86DB /* BaseCell.h */,
+				D51965972230B91400BD86DB /* BaseCell.m */,
+				D51965992230BAEF00BD86DB /* MenuCell.h */,
+				D519659A2230BAEF00BD86DB /* MenuCell.m */,
+				D515DE4F2237F78C00633C67 /* CustomImageView.h */,
+				D515DE502237F78C00633C67 /* CustomImageView.m */,
+				D515DE552238095D00633C67 /* SettingCell.h */,
+				D515DE562238095D00633C67 /* SettingCell.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D5167765223041E0006DD442 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D5188FA4221658F30068168B /* HomeController.h */,
+				D5188FA5221658F30068168B /* HomeController.m */,
+				D515DE522237FFA000633C67 /* SettingsLauncher.h */,
+				D515DE532237FFA000633C67 /* SettingsLauncher.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		D5188F95221658F30068168B = {
 			isa = PBXGroup;
 			children = (
@@ -101,10 +184,13 @@
 		D5188FA0221658F30068168B /* Yoututube */ = {
 			isa = PBXGroup;
 			children = (
+				D5B2034322399DDB00BB9799 /* Yoututube.entitlements */,
+				D519659C2230E95200BD86DB /* Models */,
+				D5167761223040E1006DD442 /* Views */,
+				D5167765223041E0006DD442 /* Controllers */,
+				D516775A22303FD5006DD442 /* Helpers */,
 				D5188FA1221658F30068168B /* AppDelegate.h */,
 				D5188FA2221658F30068168B /* AppDelegate.m */,
-				D5188FA4221658F30068168B /* ViewController.h */,
-				D5188FA5221658F30068168B /* ViewController.m */,
 				D5188FA7221658F30068168B /* Main.storyboard */,
 				D5188FAA221658F50068168B /* Assets.xcassets */,
 				D5188FAC221658F50068168B /* LaunchScreen.storyboard */,
@@ -130,6 +216,19 @@
 				D5188FC7221658F50068168B /* Info.plist */,
 			);
 			path = YoututubeUITests;
+			sourceTree = "<group>";
+		};
+		D519659C2230E95200BD86DB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D519659D22311C9100BD86DB /* Video.h */,
+				D519659E22311C9100BD86DB /* Video.m */,
+				D51965A02231230600BD86DB /* Channel.h */,
+				D51965A12231230600BD86DB /* Channel.m */,
+				D5B2033F2239642600BB9799 /* Setting.h */,
+				D5B203402239642600BB9799 /* Setting.m */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -199,6 +298,14 @@
 				TargetAttributes = {
 					D5188F9D221658F30068168B = {
 						CreatedOnToolsVersion = 10.0;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 0;
+							};
+							com.apple.Keychain = {
+								enabled = 0;
+							};
+						};
 					};
 					D5188FB5221658F50068168B = {
 						CreatedOnToolsVersion = 10.0;
@@ -262,9 +369,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D5188FA6221658F30068168B /* ViewController.m in Sources */,
+				D50DC0132232D671001EC87C /* UIImageView+Image.m in Sources */,
+				D51965982230B91400BD86DB /* BaseCell.m in Sources */,
+				D5B203412239642600BB9799 /* Setting.m in Sources */,
+				D515DE542237FFA000633C67 /* SettingsLauncher.m in Sources */,
+				D51965A22231230600BD86DB /* Channel.m in Sources */,
+				D5167768223044A1006DD442 /* MenuBar.m in Sources */,
+				D5188FA6221658F30068168B /* HomeController.m in Sources */,
+				D519659F22311C9100BD86DB /* Video.m in Sources */,
+				D516776422304117006DD442 /* VideoCell.m in Sources */,
+				D515DE512237F78C00633C67 /* CustomImageView.m in Sources */,
 				D5188FB1221658F50068168B /* main.m in Sources */,
+				D519659B2230BAEF00BD86DB /* MenuCell.m in Sources */,
 				D5188FA3221658F30068168B /* AppDelegate.m in Sources */,
+				D51677602230402D006DD442 /* UIView+Constraints.m in Sources */,
+				D516775D22303FF6006DD442 /* UIColor+RgbColor.m in Sources */,
+				D515DE572238095D00633C67 /* SettingCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -351,6 +471,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -410,6 +531,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -435,15 +557,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = S942K552EE;
+				DEVELOPMENT_TEAM = KKNSCBY26M;
 				INFOPLIST_FILE = Yoututube/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.honasapp.Yoututube;
+				PRODUCT_BUNDLE_IDENTIFIER = com.honasapppp.Yoututube;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -452,15 +577,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = S942K552EE;
+				DEVELOPMENT_TEAM = KKNSCBY26M;
 				INFOPLIST_FILE = Yoututube/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.honasapp.Yoututube;
+				PRODUCT_BUNDLE_IDENTIFIER = com.honasapppp.Yoututube;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
