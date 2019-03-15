@@ -16,6 +16,7 @@
 #import "Channel.h"
 
 #import "UIView+Constraints.h"
+#import "UIColor+RgbColor.h"
 
 @interface HomeController ()
 
@@ -76,11 +77,10 @@ static NSString *const kCellId = @"cellId";
     
     [self fetchVideos];
     
-    self.navigationItem.title = @"Home";
     self.navigationController.navigationBar.translucent = NO;
     
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width - 32, self.view.frame.size.height)];
-    titleLabel.text = @"Home";
+    titleLabel.text = @"  Home";
     titleLabel.textColor = [UIColor whiteColor];
     titleLabel.font = [UIFont systemFontOfSize:20];
     self.navigationItem.titleView = titleLabel;
@@ -105,14 +105,25 @@ static NSString *const kCellId = @"cellId";
 - (SettingsLauncher *)settingsLauncher {
     if(!_settingsLauncher) {
         _settingsLauncher = [[SettingsLauncher alloc] init];
+        _settingsLauncher.homeController = self;
     }
     return _settingsLauncher;
 }
 
 - (void)setupMenuBar {
+    self.navigationController.hidesBarsOnSwipe = YES;
+    
+    UIView *redView = [[UIView alloc] init];
+    redView.backgroundColor = [UIColor rgbWithRed:230 green:32 blue:31];
+    [self.view addSubview:redView];
+    [self.view addConstraintsWithVisualFormat:@"H:|[v0]|" withViews:redView, nil];
+    [self.view addConstraintsWithVisualFormat:@"V:[v0(50)]" withViews:redView, nil];
+    
     [self.view addSubview:self.menuBar];
     [self.view addConstraintsWithVisualFormat:@"H:|[v0]|" withViews:_menuBar, nil];
-    [self.view addConstraintsWithVisualFormat:@"V:|[v0(50)]" withViews:_menuBar, nil];
+    [self.view addConstraintsWithVisualFormat:@"V:[v0(50)]" withViews:_menuBar, nil];
+    
+    [self.menuBar.topAnchor constraintEqualToAnchor:self.topLayoutGuide.bottomAnchor].active = YES;
 }
 
 - (void)setupNavBar {
@@ -134,6 +145,15 @@ static NSString *const kCellId = @"cellId";
 
 - (void)handleMore {
     [self.settingsLauncher showSettings];
+}
+
+- (void)showControllerForSettings:(Setting *)setting {
+    UIViewController *dummySettingViewController = [[UIViewController alloc] init];
+    dummySettingViewController.view.backgroundColor = [UIColor whiteColor];
+    dummySettingViewController.navigationItem.title = setting.name;
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:[UIColor whiteColor]};
+    [self.navigationController pushViewController:dummySettingViewController animated:YES];
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {

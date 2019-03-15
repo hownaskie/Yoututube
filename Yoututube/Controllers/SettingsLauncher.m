@@ -24,6 +24,15 @@ static CGFloat kCellHeight = 50.0f;
 
 @implementation SettingsLauncher
 
+NSString *const SettingNameAvailable[] = {
+    [Settings] = @"Settings",
+    [TermsPrivacy] = @"Terms & Privacy policy",
+    [Feedback] = @"Send Feedback",
+    [Help] = @"Help",
+    [SwitchAccount] = @"Switch Account",
+    [Cancel] = @"Cancel & Dismiss"
+};
+
 - (UIView *)blackView {
     if(!_blackView) {
         _blackView = [[UIView alloc] init];
@@ -43,12 +52,12 @@ static CGFloat kCellHeight = 50.0f;
 - (NSArray<Setting *> *)settings {
     if(!_settings) {
         _settings = @[
-                      [[Setting alloc] initWithName:@"Settings" withImageName:@"settings"],
-                      [[Setting alloc] initWithName:@"Terms & Privacy policy" withImageName:@"privacy"],
-                      [[Setting alloc] initWithName:@"Send Feedback" withImageName:@"feedback"],
-                      [[Setting alloc] initWithName:@"Help" withImageName:@"help"],
-                      [[Setting alloc] initWithName:@"Switch Account" withImageName:@"switch_account"],
-                      [[Setting alloc] initWithName:@"Cancel" withImageName:@"cancel"],
+                      [[Setting alloc] initWithName:SettingNameAvailable[Settings] withImageName:@"settings"],
+                      [[Setting alloc] initWithName:SettingNameAvailable[TermsPrivacy] withImageName:@"privacy"],
+                      [[Setting alloc] initWithName:SettingNameAvailable[Feedback] withImageName:@"feedback"],
+                      [[Setting alloc] initWithName:SettingNameAvailable[Help] withImageName:@"help"],
+                      [[Setting alloc] initWithName:SettingNameAvailable[SwitchAccount] withImageName:@"switch_account"],
+                      [[Setting alloc] initWithName:SettingNameAvailable[Cancel] withImageName:@"cancel"],
                     ];
     }
     return _settings;
@@ -67,7 +76,7 @@ static CGFloat kCellHeight = 50.0f;
     if(window) {
         self.blackView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.5];
         
-        [self.blackView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleDismiss)]];
+        [self.blackView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleDismiss:)]];
         
         [window addSubview:self.blackView];
         [window addSubview:self.collectionView];
@@ -87,12 +96,19 @@ static CGFloat kCellHeight = 50.0f;
     }
 }
 
-- (void)handleDismiss {
-    [UIView animateWithDuration:0.5 animations:^{
+- (void)handleDismiss:(id)sender {
+    [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:1 initialSpringVelocity:1 options:UIViewAnimationOptionCurveEaseOut animations:^{
         self.blackView.alpha = 0.0;
         UIWindow *window = [UIApplication sharedApplication].keyWindow;
         if(window) {
             self.collectionView.frame = CGRectMake(0, window.frame.size.height, self.collectionView.frame.size.width, self.collectionView.frame.size.height);
+        }
+    } completion:^(BOOL finished) {
+        if([sender isKindOfClass:[Setting class]]) {
+            Setting *setting = (Setting *)sender;
+            if(![setting.name isEqualToString:@""] && ![setting.name isEqualToString:@"Cancel & Dismiss"]) {
+                [self.homeController showControllerForSettings:setting];
+            }
         }
     }];
 }
@@ -117,7 +133,8 @@ static CGFloat kCellHeight = 50.0f;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    [self handleDismiss];
+    Setting *setting = [self.settings objectAtIndex:indexPath.item];
+    [self handleDismiss:setting];
 }
 
 @end

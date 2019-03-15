@@ -8,10 +8,22 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "HomeController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef NS_ENUM(NSInteger, SettingName) {
+    Settings,
+    TermsPrivacy,
+    Feedback,
+    Help,
+    SwitchAccount,
+    Cancel
+};
+
 @interface SettingsLauncher : NSObject
+
+@property (nonatomic, strong) HomeController *homeController;
 
 - (void)showSettings;
 

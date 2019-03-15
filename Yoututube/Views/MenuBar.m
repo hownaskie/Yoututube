@@ -16,6 +16,8 @@
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) NSArray *imageNames;
 
+@property (nonatomic, strong) NSLayoutConstraint *horizontalBarLeftAnchorConstraint;
+
 @end
 
 static NSString *const kCellId = @"cellId";
@@ -52,7 +54,24 @@ static NSString *const kCellId = @"cellId";
     NSIndexPath *selectedIndexPath = [NSIndexPath indexPathForItem:0 inSection:0];
     [self.collectionView selectItemAtIndexPath:selectedIndexPath animated:NO scrollPosition:UICollectionViewScrollPositionNone];
     
+    [self setupHorizontalBar];
+    
     return self;
+}
+
+- (void)setupHorizontalBar {
+    UIView *horizontalBarView = [[UIView alloc] init];
+    horizontalBarView.backgroundColor = [UIColor colorWithWhite:0.95 alpha:1];
+    horizontalBarView.translatesAutoresizingMaskIntoConstraints = NO;
+    [self addSubview:horizontalBarView];
+    
+    self.horizontalBarLeftAnchorConstraint = [horizontalBarView.leftAnchor constraintEqualToAnchor:self.leftAnchor];
+    self.horizontalBarLeftAnchorConstraint.active = YES;
+    
+    CGFloat horizontalBarViewWidth = [UIScreen mainScreen].bounds.size.width / 4;
+    [horizontalBarView.bottomAnchor constraintEqualToAnchor:self.bottomAnchor].active = YES;
+    [horizontalBarView.widthAnchor constraintEqualToConstant:horizontalBarViewWidth].active = YES;
+    [horizontalBarView.heightAnchor constraintEqualToConstant:4].active = YES;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
@@ -72,6 +91,15 @@ static NSString *const kCellId = @"cellId";
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
     return 0;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    CGFloat x = ((CGFloat)indexPath.item) * self.frame.size.width / 4;
+    self.horizontalBarLeftAnchorConstraint.constant = x;
+    
+    [UIView animateWithDuration:0.75 delay:0 usingSpringWithDamping:1 initialSpringVelocity:1 options:UIViewAnimationOptionCurveEaseOut animations:^{
+        [self layoutIfNeeded];
+    } completion:nil];
 }
 
 @end
