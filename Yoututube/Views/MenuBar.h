@@ -7,10 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HomeController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface MenuBar : UIView
+
+@property (nonatomic, strong) HomeController *homeController;
+@property (nonatomic, strong) UICollectionView *collectionView;
+@property (nonatomic, strong) NSLayoutConstraint *horizontalBarLeftAnchorConstraint;
 
 @end
 

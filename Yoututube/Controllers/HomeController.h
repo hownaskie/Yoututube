@@ -12,6 +12,7 @@
 @interface HomeController : UICollectionViewController <UICollectionViewDelegateFlowLayout>
 
 - (void)showControllerForSettings:(Setting *)setting;
+- (void)scrollToMenuIndex:(NSInteger)index;
 
 @end
 

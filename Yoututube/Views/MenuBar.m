@@ -13,10 +13,7 @@
 
 @interface MenuBar () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 
-@property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) NSArray *imageNames;
-
-@property (nonatomic, strong) NSLayoutConstraint *horizontalBarLeftAnchorConstraint;
 
 @end
 
@@ -94,12 +91,14 @@ static NSString *const kCellId = @"cellId";
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    CGFloat x = ((CGFloat)indexPath.item) * self.frame.size.width / 4;
+    /*CGFloat x = ((CGFloat)indexPath.item) * self.frame.size.width / 4;
     self.horizontalBarLeftAnchorConstraint.constant = x;
     
     [UIView animateWithDuration:0.75 delay:0 usingSpringWithDamping:1 initialSpringVelocity:1 options:UIViewAnimationOptionCurveEaseOut animations:^{
         [self layoutIfNeeded];
-    } completion:nil];
+    } completion:nil];*/
+    
+    [self.homeController scrollToMenuIndex:indexPath.item];
 }
 
 @end

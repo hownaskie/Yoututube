@@ -7,7 +7,9 @@
 //
 
 #import "HomeController.h"
-#import "VideoCell.h"
+#import "FeedCell.h"
+#import "TrendingCell.h"
+#import "SubscriptionCell.h"
 #import "MenuBar.h"
 
 #import "SettingsLauncher.h"
@@ -21,83 +23,22 @@
 @interface HomeController ()
 
 @property (nonatomic, strong) MenuBar *menuBar;
-
-@property (nonatomic, strong) NSMutableArray<Video *> *videos;
-
 @property (nonatomic, strong) SettingsLauncher *settingsLauncher;
+
+@property (nonatomic, strong) NSArray *titles;
 
 @end
 
 static NSString *const kCellId = @"cellId";
+static NSString *const kTrendingCellId = @"kTrendingCellId";
+static NSString *const kSubscriptionCellId = @"kSubscriptionCellId";
 
 @implementation HomeController
-
-- (NSMutableArray<Video *> *)videos {
-    if(!_videos) {
-        _videos = [[NSMutableArray alloc] init];
-    }
-    return _videos;
-}
-
-- (void)fetchVideos {
-    NSURL *url = [NSURL URLWithString:@"https://s3-us-west-2.amazonaws.com/youtubeassets/home.json"];
-    [[[NSURLSession sharedSession] dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-        
-        if(error) return;
-        
-        NSError *jsonError = nil;
-        NSArray *json = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&jsonError];
-        if(jsonError) return;
-        
-        
-        for(NSDictionary *dictionary in json) {
-            Video *video = [[Video alloc] init];
-            video.title = dictionary[@"title"];
-            video.thumbnailImageName = dictionary[@"thumbnail_image_name"];
-            video.numberOfViews = dictionary[@"number_of_views"];
-            
-            NSDictionary *channelDictionary = dictionary[@"channel"];
-            
-            Channel *channel = [[Channel alloc] init];
-            channel.name = channelDictionary[@"name"];
-            channel.profileImageName = channelDictionary[@"profile_image_name"];
-            video.channel = channel;
-            
-            [self.videos addObject:video];
-        }
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.collectionView reloadData];
-        });
-    }] resume];
-}
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    [self fetchVideos];
-    
-    self.navigationController.navigationBar.translucent = NO;
-    
-    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width - 32, self.view.frame.size.height)];
-    titleLabel.text = @"  Home";
-    titleLabel.textColor = [UIColor whiteColor];
-    titleLabel.font = [UIFont systemFontOfSize:20];
-    self.navigationItem.titleView = titleLabel;
-    
-    self.collectionView.backgroundColor = [UIColor whiteColor];
-    [self.collectionView registerClass:[VideoCell class] forCellWithReuseIdentifier:kCellId];
-    
-    self.collectionView.contentInset = UIEdgeInsetsMake(50, 0, 0, 0);
-    self.collectionView.scrollIndicatorInsets = UIEdgeInsetsMake(50, 0, 0, 0);
-    
-    [self setupMenuBar];
-    [self setupNavBar];
-}
 
 - (MenuBar *)menuBar {
     if(!_menuBar) {
         _menuBar = [[MenuBar alloc] init];
+        _menuBar.homeController = self;
     }
     return _menuBar;
 }
@@ -108,6 +49,46 @@ static NSString *const kCellId = @"cellId";
         _settingsLauncher.homeController = self;
     }
     return _settingsLauncher;
+}
+
+- (NSArray *)titles {
+    if(!_titles) {
+        _titles = @[@"Home", @"Trending", @"Subscriptions", @"Account"];
+    }
+    return _titles;
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    self.navigationController.navigationBar.translucent = NO;
+    
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width - 32, self.view.frame.size.height)];
+    titleLabel.text = @"  Home";
+    titleLabel.textColor = [UIColor whiteColor];
+    titleLabel.font = [UIFont systemFontOfSize:20];
+    self.navigationItem.titleView = titleLabel;
+    
+    [self setupCollectionView];
+    [self setupMenuBar];
+    [self setupNavBar];
+}
+
+- (void)setupCollectionView {
+    UICollectionViewFlowLayout *flowLayout = (UICollectionViewFlowLayout *)self.collectionView.collectionViewLayout;
+    if(flowLayout) {
+        flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+        flowLayout.minimumLineSpacing = 0.0f;
+    }
+    
+    self.collectionView.backgroundColor = [UIColor whiteColor];
+    [self.collectionView registerClass:[FeedCell class] forCellWithReuseIdentifier:kCellId];
+    [self.collectionView registerClass:[TrendingCell class] forCellWithReuseIdentifier:kTrendingCellId];
+    [self.collectionView registerClass:[SubscriptionCell class] forCellWithReuseIdentifier:kSubscriptionCellId];
+    
+    self.collectionView.contentInset = UIEdgeInsetsMake(50, 0, 0, 0);
+    self.collectionView.scrollIndicatorInsets = UIEdgeInsetsMake(50, 0, 0, 0);
+    self.collectionView.pagingEnabled = YES;
 }
 
 - (void)setupMenuBar {
@@ -143,6 +124,18 @@ static NSString *const kCellId = @"cellId";
     
 }
 
+- (void)scrollToMenuIndex:(NSInteger)index {
+    NSIndexPath *indexPath = [NSIndexPath indexPathForItem:index inSection:0];
+    [self.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
+    
+    [self setTitleForIndex:index];
+}
+
+- (void)setTitleForIndex:(NSInteger)index {
+    UILabel *titleLabel = (UILabel *)self.navigationItem.titleView;
+    titleLabel.text = [NSString stringWithFormat:@"  %@", [self.titles objectAtIndex:index]];
+}
+
 - (void)handleMore {
     [self.settingsLauncher showSettings];
 }
@@ -156,28 +149,39 @@ static NSString *const kCellId = @"cellId";
     [self.navigationController pushViewController:dummySettingViewController animated:YES];
 }
 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    self.menuBar.horizontalBarLeftAnchorConstraint.constant = scrollView.contentOffset.x / 4;
+}
+
+- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset {
+    NSInteger index = (NSInteger)(floor(targetContentOffset->x / self.view.frame.size.width));
+    NSIndexPath *indexPath = [NSIndexPath indexPathForItem:index inSection:0];
+    [self.menuBar.collectionView selectItemAtIndexPath:indexPath animated:YES scrollPosition:UICollectionViewScrollPositionNone];
+    
+    [self setTitleForIndex:index];
+}
+
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    if(self.videos.count > 0) {
-        return self.videos.count;
-    }
-    return 0;
+    return 4;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    VideoCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCellId forIndexPath:indexPath];
-    if(self.videos.count > 0) {
-        cell.video = [self.videos objectAtIndex:indexPath.item];
+    
+    NSString *identifier = nil;
+    if(indexPath.item == 1) {
+        identifier = kTrendingCellId;
+    } else if(indexPath.item == 2) {
+        identifier = kSubscriptionCellId;
+    } else {
+        identifier = kCellId;
     }
+    
+    id cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
     return cell;
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    CGFloat height = (self.view.frame.size.width - 16 - 16) * 9 / 16;
-    return CGSizeMake(self.view.frame.size.width, height + 16 + 88);
-}
-
-- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
-    return 0;
+    return CGSizeMake(self.view.frame.size.width, self.view.frame.size.height - 50);
 }
 
 @end
