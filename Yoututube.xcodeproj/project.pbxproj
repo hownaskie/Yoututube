@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04DF6F0C2250E5FC0005FE6D /* VideoLauncher.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DF6F0B2250E5FC0005FE6D /* VideoLauncher.m */; };
+		04DF6F0F2250EB240005FE6D /* VideoPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DF6F0E2250EB240005FE6D /* VideoPlayerView.m */; };
 		29DE8BE6795E70FF23838575 /* libPods-YoututubeUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BEA6D8A68248107E9C0EDAA4 /* libPods-YoututubeUITests.a */; };
 		C72DDC5DBD9FF7AA6475E73D /* libPods-YoututubeTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CDBCD2AA240A240157D99F0E /* libPods-YoututubeTests.a */; };
 		CFE25EDD46F78E058ADE6B4B /* libPods-Yoututube.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B917F8DAEE23A80F3E1CF6E0 /* libPods-Yoututube.a */; };
@@ -55,6 +57,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		04DF6F0A2250E5FC0005FE6D /* VideoLauncher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VideoLauncher.h; sourceTree = "<group>"; };
+		04DF6F0B2250E5FC0005FE6D /* VideoLauncher.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VideoLauncher.m; sourceTree = "<group>"; };
+		04DF6F0D2250EB240005FE6D /* VideoPlayerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VideoPlayerView.h; sourceTree = "<group>"; };
+		04DF6F0E2250EB240005FE6D /* VideoPlayerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VideoPlayerView.m; sourceTree = "<group>"; };
 		19B2EC1DC76BCD0E1CB29E07 /* Pods-YoututubeUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YoututubeUITests.release.xcconfig"; path = "Target Support Files/Pods-YoututubeUITests/Pods-YoututubeUITests.release.xcconfig"; sourceTree = "<group>"; };
 		2E49E0F231DF9DB7128A7422 /* Pods-Yoututube.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yoututube.debug.xcconfig"; path = "Target Support Files/Pods-Yoututube/Pods-Yoututube.debug.xcconfig"; sourceTree = "<group>"; };
 		9975D67A5726239A023B2E07 /* Pods-YoututubeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YoututubeTests.release.xcconfig"; path = "Target Support Files/Pods-YoututubeTests/Pods-YoututubeTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -155,7 +161,6 @@
 				A24913160F6DE61BE5F75763 /* Pods-YoututubeUITests.debug.xcconfig */,
 				19B2EC1DC76BCD0E1CB29E07 /* Pods-YoututubeUITests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -178,6 +183,8 @@
 				D516775F2230402D006DD442 /* UIView+Constraints.m */,
 				D50DC0112232D671001EC87C /* UIImageView+Image.h */,
 				D50DC0122232D671001EC87C /* UIImageView+Image.m */,
+				04DF6F0A2250E5FC0005FE6D /* VideoLauncher.h */,
+				04DF6F0B2250E5FC0005FE6D /* VideoLauncher.m */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -203,6 +210,8 @@
 				D524EB23224015810061C61A /* TrendingCell.m */,
 				D524EB25224018D00061C61A /* SubscriptionCell.h */,
 				D524EB26224018D00061C61A /* SubscriptionCell.m */,
+				04DF6F0D2250EB240005FE6D /* VideoPlayerView.h */,
+				04DF6F0E2250EB240005FE6D /* VideoPlayerView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -521,6 +530,7 @@
 				D524EB24224015810061C61A /* TrendingCell.m in Sources */,
 				D516776422304117006DD442 /* VideoCell.m in Sources */,
 				D524EB2122400B380061C61A /* FeedCell.m in Sources */,
+				04DF6F0C2250E5FC0005FE6D /* VideoLauncher.m in Sources */,
 				D515DE512237F78C00633C67 /* CustomImageView.m in Sources */,
 				D524EB1D2240071C0061C61A /* ApiService.m in Sources */,
 				D5188FB1221658F50068168B /* main.m in Sources */,
@@ -528,6 +538,7 @@
 				D5188FA3221658F30068168B /* AppDelegate.m in Sources */,
 				D51677602230402D006DD442 /* UIView+Constraints.m in Sources */,
 				D516775D22303FF6006DD442 /* UIColor+RgbColor.m in Sources */,
+				04DF6F0F2250EB240005FE6D /* VideoPlayerView.m in Sources */,
 				D524EB27224018D00061C61A /* SubscriptionCell.m in Sources */,
 				D515DE572238095D00633C67 /* SettingCell.m in Sources */,
 			);

@@ -11,6 +11,8 @@
 
 #import "VideoCell.h"
 
+#import "VideoLauncher.h"
+
 #import "ApiService.h"
 
 @interface FeedCell () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
@@ -80,6 +82,11 @@ static NSString *const kCellId = @"kCellId";
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
     return 0;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    VideoLauncher *videoLauncher = [[VideoLauncher alloc] init];
+    [videoLauncher showVideoPlayer];
 }
 
 @end
